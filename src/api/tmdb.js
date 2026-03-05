@@ -19,16 +19,16 @@ export const getTopRatedMovies = async () => {
   return res.data.results;
 };
 
-export const getPopularMovies = async () => {
+export const getPopularMovies = async (page = 1) => {
   const res = await axios.get(
-    `${BASE_URL}/movie/popular?api_key=${API_KEY}`
+    `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`
   );
-  return res.data.results;
+  return res.data; // returning full data to get total_pages
 };
 
-export const searchMovies = async (query) => {
+export const searchMovies = async (query, page = 1) => {
   const res = await axios.get(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`
   );
-  return res.data.results;
+  return res.data; // returning full data to get total_pages
 };

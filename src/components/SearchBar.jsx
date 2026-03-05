@@ -6,7 +6,7 @@ const SearchBar = ({ onSearch }) => {
   const handleChange = (e) => {
     const value = e.target.value;
     setQuery(value);
-    onSearch(value);
+    onSearch(value); // We will still call onSearch(value), but Home.jsx will set its own searchQuery state and debounce THAT.
   };
 
   return (
