@@ -4,6 +4,7 @@ import MovieGrid from "../components/MovieGrid";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 import useDebounce from "../hooks/useDebounce";
+import MoodMatcher from "../components/MoodMatcher";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -54,6 +55,11 @@ const Home = () => {
     setQuery(newQuery);
   };
 
+  const handleMoodSuggestion = (suggestedTitle) => {
+    setQuery(suggestedTitle);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   // Infinite Scroll Observer
   const observer = useRef();
   const lastElementRef = useCallback((node) => {
@@ -74,6 +80,11 @@ const Home = () => {
     <div className="bg-black min-h-screen pb-10">
       {/* Navbar */}
       <Navbar onSearch={handleSearch} />
+
+      {/* Mood Matcher AI Feature */}
+      <div className="px-10 mt-6">
+        <MoodMatcher onSuggestion={handleMoodSuggestion} />
+      </div>
 
       {/* Page Title */}
       <h2 className="text-white text-3xl font-bold px-10 mt-6">
