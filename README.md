@@ -5,7 +5,7 @@
 ## 📸 Project Preview
 
 ### Movies Grid
-![Movies Grid](src/assets/pi.png)
+![Movies Grid](src/assets/ui.png)
 
 ---
 
